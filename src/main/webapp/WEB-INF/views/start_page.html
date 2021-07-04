@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>FindPage</title>
+  <style>
+    #error_text {
+      color: darkred;
+      background-color: rosybrown;
+      border: 2px solid darkred;
+      text-align: center;
+      max-width: 50%;
+      min-height: 20px;
+      padding: 10px;
+    }
+    #success_text {
+      color: seagreen;
+      text-align: center;
+      max-width: 50%;
+      background-color: palegreen;
+      border: 2px solid seagreen;
+      min-height: 20px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<form th:method="GET" th:action="@{/find}">
+  <label for="url">Enter web page URL: </label>
+  <input type="text" id="url" name="url"/>
+  <div id="error_text" th:if="${!error.isEmpty()}" th:text="${error}">URL Error</div>
+  <br/>
+  <input type="submit" value="Find"/>
+  <div id="success_text" th:if="${!success.isEmpty()}" th:text="${success}">URL Success</div>
+</form>
+
+</body>
+</html>
